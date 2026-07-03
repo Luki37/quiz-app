@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>QuizApp</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -11,18 +11,18 @@
       <div class="question">
         <div class="question-title">Fragestellung?</div>
         <div class="btns">
-          <button class="button" onclick("answer1")>Antwort 1</button
-          ><button class="button" onclick("answer2")>Antwort 2</button
-          ><button class="button" onclick("answer3")>Antwort 3</button
-          ><button class="button" onclick("answer4")>Antwort 4</button>
+          <button class="button" onclick="answer1()">Antwort 1</button
+          ><button class="button" onclick="answer2()">Antwort 2</button
+          ><button class="button" onclick="answer3()">Antwort 3</button
+          ><button class="button" onclick="answer4()">Antwort 4</button>
         </div>
       </div>
     </div>
     <div class="footer">
-      <button class="button" id="result">Lösung</button>
-      <button class="button" id="next">Weiter</button>
+      <button class="button" onclick="result()">Lösung</button>
+      <button class="button" onclick="next()">Weiter</button>
     </div>
-    
+
     <script src="script.js"></script>
   </body>
 </html>
