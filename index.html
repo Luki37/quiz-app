@@ -25,22 +25,38 @@
       </p>
       <div class="formQuest">
         <p>Frage:</p>
-        <input placeholder="Frage eingeben" type="text" />
+        <input id="inputQuest" placeholder="Frage eingeben" type="text" />
         <p>Richtige Antwort:</p>
-        <input placeholder="Richtige Antwort" type="text" />
+        <input
+          id="inputTrueAnswer"
+          placeholder="Richtige Antwort eingeben"
+          type="text"
+        />
         <p>Falsche Antwort:</p>
-        <input placeholder="Falsche Anwort" type="text" />
+        <input
+          id="inputFalseAnswer1"
+          placeholder="Falsche Anwort eingeben"
+          type="text"
+        />
         <p>Falsche Antwort:</p>
-        <input placeholder="Falsche Anwort" type="text" />
+        <input
+          id="inputFalseAnswer2"
+          placeholder="Falsche Anwort eingeben"
+          type="text"
+        />
         <p>Falsche Antwort:</p>
-        <input placeholder="Falsche Anwort" type="text" />
+        <input
+          id="inputFalseAnswer3"
+          placeholder="Falsche Anwort eingeben"
+          type="text"
+        />
       </div>
       <div class="formBtn">
-        <button class="button">Löschen</button>
-        <button class="button">Abbrechen</button>
-        <button class="button">Speichern</button>
+        <button class="button" onclick="deleteQuest()">Löschen</button>
+        <button class="button" onclick="reset()">Abbrechen</button>
+        <button class="button" onclick="saveQuest()">Speichern</button>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

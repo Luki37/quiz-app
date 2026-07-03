@@ -11,6 +11,12 @@ let questionList = [
   },
 ];
 
+const inputQuest = document.getElementById("inputQuest");
+const inputTrueAnswer = document.getElementById("inputTrueAnswer");
+const inputFalseAnswer1 = document.getElementById("inputFalseAnswer1");
+const inputFalseAnswer2 = document.getElementById("inputFalseAnswer2");
+const inputFalseAnswer3 = document.getElementById("inputFalseAnswer3");
+
 let trueAnswer = null;
 
 function next() {
@@ -86,4 +92,20 @@ function next() {
 
 function showResult() {
   trueAnswer.style.backgroundColor = "rgb(74, 194,74";
+}
+
+/*löscht eine Frage anhand der Richtigen Antwort aus dem localstorage*/
+function deleteQuest() {}
+
+/*speichert eine Frage und alle Antworten im localstorage*/
+/*alle Felder müssen ausgefüllt sein*/
+function saveQuest() {}
+
+/*leert das Formular*/
+function reset() {
+  inputQuest.value = "";
+  inputTrueAnswer.value = "";
+  inputFalseAnswer1.value = "";
+  inputFalseAnswer2.value = "";
+  inputFalseAnswer3.value = "";
 }
