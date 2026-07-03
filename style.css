@@ -1,0 +1,28 @@
+.question-title {
+  font-size: 3rem;
+  margin: 1rem;
+}
+
+.btns {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.button {
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(221, 220, 219);
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  margin: 2rem 1rem;
+  gap: 1rem;
+}
