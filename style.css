@@ -3,12 +3,27 @@ body {
   --shador-color: rgb(219, 9, 149, 0.1) 0px 0px 20px;
   --btn-hover: rgb(245, 149, 232);
   --btn-color: rgb(248, 191, 240);
+  --background-color: rgb(90, 245, 232, 0.1);
 }
 
-.question {
+#wrapper {
+  display: flex;
+  justify-content: center;
+}
+.intro {
   border-radius: 10px;
   box-shadow: var(--shador-color);
-  padding: 1rem;
+  padding: 2rem;
+  background-color: var(--background-color);
+  font-size: 3rem;
+}
+
+.question,
+.formContainer {
+  border-radius: 10px;
+  box-shadow: var(--shador-color);
+  padding: 2rem;
+  background-color: var(--background-color);
 }
 
 .question-title {
@@ -19,7 +34,6 @@ body {
 .btns {
   display: grid;
   grid-template-columns: auto auto;
-
   gap: 1rem;
 }
 
@@ -36,8 +50,15 @@ button:hover {
   cursor: pointer;
 }
 
+.button:disabled {
+  opacity: 1;
+  color: inherit;
+  cursor: not-allowed;
+}
+
 .footer {
   display: flex;
+  justify-content: center;
   margin: 2rem 1rem;
   gap: 1rem;
 }
@@ -45,4 +66,37 @@ button:hover {
 #result,
 #next {
   box-shadow: var(--shador-color);
+}
+
+.formContainer {
+  border-radius: 10px;
+  box-shadow: var(--shador-color);
+  padding: 2rem;
+  background-color: var(--background-color);
+}
+
+.formQuest {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0.5rem;
+}
+
+p {
+  margin: 0;
+  width: fit-content;
+}
+
+.info {
+  margin: 0.2rem 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+.formBtn {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.formTitle {
+  font-size: 1.5rem;
 }

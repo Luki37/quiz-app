@@ -8,21 +8,39 @@
   </head>
   <body>
     <div id="wrapper">
-      <div class="question">
-        <div class="question-title">Fragestellung?</div>
-        <div class="btns">
-          <button class="button" onclick="answer1()">Antwort 1</button
-          ><button class="button" onclick="answer2()">Antwort 2</button
-          ><button class="button" onclick="answer3()">Antwort 3</button
-          ><button class="button" onclick="answer4()">Antwort 4</button>
-        </div>
-      </div>
+      <p class="intro">Klicke auf "Weiter" um zu starten!</p>
     </div>
     <div class="footer">
-      <button class="button" onclick="result()">Lösung</button>
+      <button class="button" id="result" onclick="showResult()">Lösung</button>
       <button class="button" onclick="next()">Weiter</button>
     </div>
-
+    <div class="formContainer">
+      <p class="formTitle">Hier kannst du deine Frage erfassen:</p>
+      <p class="info">
+        Gib eine Frage und die richtige Antwort ein, dazu noch drei falsche
+        Antworten für die Auswahl. dann drücke "Speichern" <br />
+        Um eine Frage wieder aus dem Speicher zu löschen gib die richtige Anwort
+        <i>dieser Frage</i> im entsprechnenden Feld ein und klicke auf
+        "Löschen".
+      </p>
+      <div class="formQuest">
+        <p>Frage:</p>
+        <input placeholder="Frage eingeben" type="text" />
+        <p>Richtige Antwort:</p>
+        <input placeholder="Richtige Antwort" type="text" />
+        <p>Falsche Antwort:</p>
+        <input placeholder="Falsche Anwort" type="text" />
+        <p>Falsche Antwort:</p>
+        <input placeholder="Falsche Anwort" type="text" />
+        <p>Falsche Antwort:</p>
+        <input placeholder="Falsche Anwort" type="text" />
+      </div>
+      <div class="formBtn">
+        <button class="button">Löschen</button>
+        <button class="button">Abbrechen</button>
+        <button class="button">Speichern</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
