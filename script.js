@@ -24,6 +24,8 @@ function saveArrayToLocalstorage() {
 }
 
 function next() {
+  questionList = JSON.parse(localStorage.getItem("questionList"));
+
   let wrapper = document.getElementById("wrapper");
   wrapper.innerHTML = "";
 
@@ -133,3 +135,7 @@ function reset() {
   inputFalseAnswer2.value = "";
   inputFalseAnswer3.value = "";
 }
+
+/*export button für Exportieren in downloads der JSON datei mit den fragen*/
+
+/*importbutton um fragen aus er Jsondatei zu laden*/

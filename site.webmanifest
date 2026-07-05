@@ -1,6 +1,6 @@
 {
   "name": "QuizApp",
-  "short_name": "Website",
+  "short_name": "QuizApp",
   "icons": [
     {
       "src": "./android-chrome-192x192.png",
