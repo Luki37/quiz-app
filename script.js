@@ -19,6 +19,10 @@ const inputFalseAnswer3 = document.getElementById("inputFalseAnswer3");
 
 let trueAnswer = null;
 
+function saveArrayToLocalstorage() {
+  localStorage.setItem("questionList", JSON.stringify(questionList));
+}
+
 function next() {
   let wrapper = document.getElementById("wrapper");
   wrapper.innerHTML = "";
@@ -99,7 +103,27 @@ function deleteQuest() {}
 
 /*speichert eine Frage und alle Antworten im localstorage*/
 /*alle Felder müssen ausgefüllt sein*/
-function saveQuest() {}
+function saveQuest() {
+  const newQuest = inputQuest.value;
+  const newTrueAnswer = inputTrueAnswer.value;
+  const newFalseAnswer1 = inputFalseAnswer1.value;
+  const newFalseAnswer2 = inputFalseAnswer2.value;
+  const newFalseAnswer3 = inputFalseAnswer3.value;
+
+  const questElement = {
+    question: newQuest,
+    answerTrue: newTrueAnswer,
+    answerFalse: [newFalseAnswer1, newFalseAnswer2, newFalseAnswer3],
+  };
+
+  questionList.push(questElement);
+  saveArrayToLocalstorage();
+
+  console.log(questElement);
+  console.log(questionList);
+
+  reset();
+}
 
 /*leert das Formular*/
 function reset() {
