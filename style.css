@@ -23,12 +23,22 @@ body {
   border-radius: 10px;
   box-shadow: var(--shador-color);
   padding: 2rem;
+  width: 90vw;
   background-color: var(--background-color);
 }
 
 .question-title {
   font-size: 3rem;
   margin-bottom: 1.5rem;
+}
+
+.deleteBtn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--btn-color);
+  border-radius: 5px;
+  border: none;
 }
 
 .btns {
@@ -45,7 +55,8 @@ body {
   background-color: var(--btn-color);
 }
 
-button:hover {
+.button:hover,
+.deleteBtn:hover {
   background-color: var(--btn-hover);
   cursor: pointer;
 }

@@ -1,15 +1,4 @@
-let questionList = [
-  {
-    question: "Wie heisst die Hauptstadt von Deutschland?",
-    answerTrue: "Berlin",
-    answerFalse: ["Köln", "Hannover", "München"],
-  },
-  {
-    question: "Wie heisst die Haupstadt von Frankreich?",
-    answerTrue: "Paris",
-    answerFalse: ["Bordeaux", "Lyon", "Marseille"],
-  },
-];
+let questionList = [];
 
 const inputQuest = document.getElementById("inputQuest");
 const inputTrueAnswer = document.getElementById("inputTrueAnswer");
@@ -47,6 +36,10 @@ function next() {
 
   const question = document.createElement("div");
   question.classList.add("question");
+  question.id = randomQuestion.questId;
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("deleteBtn");
+  deleteBtn.innerText = "X";
   const questionTitle = document.createElement("div");
   questionTitle.classList.add("question-title");
   questionTitle.innerText = randomQuestion.question;
@@ -72,6 +65,9 @@ function next() {
 
   question.appendChild(questionTitle);
   question.appendChild(btns);
+  question.appendChild(deleteBtn);
+
+  deleteBtn.setAttribute("onclick", `deleteQuest(${question.id})`);
 
   const allButtons = [answer1, answer2, answer3, answer4];
 
@@ -97,11 +93,22 @@ function next() {
 }
 
 function showResult() {
-  trueAnswer.style.backgroundColor = "rgb(74, 194,74";
+  trueAnswer.style.backgroundColor = "rgb(74, 194,74)";
 }
 
-/*löscht eine Frage anhand der Richtigen Antwort aus dem localstorage*/
-function deleteQuest() {}
+/*löscht eine Frage aus dem localstorage*/
+function deleteQuest(questId) {
+  const securityRequest = confirm("Möchtest du die Frage dauerhaft löschen?");
+  if (!securityRequest) {
+    return;
+  }
+  document.addEventListener("DOMContentLoaded", deleteQuest);
+  document.getElementById(questId).remove();
+  questionList = questionList.filter((question) => {
+    return question.questId !== questId;
+  });
+  saveArrayToLocalstorage();
+}
 
 /*speichert eine Frage und alle Antworten im localstorage*/
 /*alle Felder müssen ausgefüllt sein*/
@@ -112,19 +119,33 @@ function saveQuest() {
   const newFalseAnswer2 = inputFalseAnswer2.value;
   const newFalseAnswer3 = inputFalseAnswer3.value;
 
-  const questElement = {
-    question: newQuest,
-    answerTrue: newTrueAnswer,
-    answerFalse: [newFalseAnswer1, newFalseAnswer2, newFalseAnswer3],
-  };
+  if (
+    newQuest === "" ||
+    newTrueAnswer === "" ||
+    newFalseAnswer1 === "" ||
+    newFalseAnswer2 === "" ||
+    newFalseAnswer3 === ""
+  ) {
+    alert("Bitte alle Felder ausfüllen!");
+  } else {
+    const questId = Date.now();
 
-  questionList.push(questElement);
-  saveArrayToLocalstorage();
+    const questElement = {
+      question: newQuest,
+      answerTrue: newTrueAnswer,
+      answerFalse: [newFalseAnswer1, newFalseAnswer2, newFalseAnswer3],
+      questId: questId,
+    };
 
-  console.log(questElement);
-  console.log(questionList);
+    questionList.push(questElement);
+    saveArrayToLocalstorage();
 
-  reset();
+    console.log(questElement);
+    console.log(questionList);
+
+    reset();
+    inputQuest.focus();
+  }
 }
 
 /*leert das Formular*/
@@ -134,6 +155,7 @@ function reset() {
   inputFalseAnswer1.value = "";
   inputFalseAnswer2.value = "";
   inputFalseAnswer3.value = "";
+  inputQuest.focus();
 }
 
 /*export button für Exportieren in downloads der JSON datei mit den fragen*/
