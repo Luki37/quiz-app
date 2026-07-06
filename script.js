@@ -1,4 +1,35 @@
-let questionList = [];
+let questionList = [
+  {
+    question:
+      "Welches ungewöhnliche Detail ziert das offizielle Siegel der Stadt Los Angeles (USA)?",
+    answerTrue: "Eine kleine Abbildung einer Avocado",
+    answerFalse: [
+      "Ein mikroskopisch kleines Bild von Mickey Mouse",
+      "Die Unterschrift des allerersten Bürgermeisters, die sich als Rechtschreibfehler entpuppte",
+      "Die genauen Koordinaten des ersten McDonald's-Restaurants",
+    ],
+  },
+  {
+    question:
+      "Was passierte im Jahr 2008 mit dem offiziellen Staatsnamen von Kiribati im offiziellen Telefonbuch der Hauptstadt?",
+    answerTrue: " Er fehlte komplett, weil der Buchstabe „K“ ausging.",
+    answerFalse: [
+      "Er wurde komplett rückwärts abgedruckt.",
+      "Er wurde versehentlich durch das Rezept für Bananenbrot ersetzt.",
+      "Er wurde in Comic Sans gedruckt.",
+    ],
+  },
+  {
+    question:
+      "Welches bizarre Verbot gilt laut einem alten, aber immer noch gültigen Gesetz in der Stadt Gainesville im US-Bundesstaat Georgia?",
+    answerTrue: "Man darf Brathähnchen nicht mit einer Gabel essen.",
+    answerFalse: [
+      "Man darf sonntags keinem Esel ein Korsett anlegen",
+      "Enten müssen lange Hosen tragen.",
+      "Man darf eine Schildkröte nicht als Hut tragen.",
+    ],
+  },
+];
 
 const inputQuest = document.getElementById("inputQuest");
 const inputTrueAnswer = document.getElementById("inputTrueAnswer");
@@ -11,6 +42,8 @@ let trueAnswer = null;
 function saveArrayToLocalstorage() {
   localStorage.setItem("questionList", JSON.stringify(questionList));
 }
+
+saveArrayToLocalstorage();
 
 function next() {
   questionList = JSON.parse(localStorage.getItem("questionList"));
