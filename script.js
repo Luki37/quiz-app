@@ -160,4 +160,4 @@ function reset() {
 
 /*export button für Exportieren in downloads der JSON datei mit den fragen*/
 
-/*importbutton um fragen aus er Jsondatei zu laden*/
+/*importbutton um fragen aus er Json datei zu laden*/
