@@ -8,6 +8,7 @@ let questionList = [
       "Die Unterschrift des allerersten Bürgermeisters, die sich als Rechtschreibfehler entpuppte",
       "Die genauen Koordinaten des ersten McDonald's-Restaurants",
     ],
+    questId: 1,
   },
   {
     question:
@@ -18,6 +19,7 @@ let questionList = [
       "Er wurde versehentlich durch das Rezept für Bananenbrot ersetzt.",
       "Er wurde in Comic Sans gedruckt.",
     ],
+    questId: 2,
   },
   {
     question:
@@ -28,6 +30,7 @@ let questionList = [
       "Enten müssen lange Hosen tragen.",
       "Man darf eine Schildkröte nicht als Hut tragen.",
     ],
+    questId: 3,
   },
 ];
 
