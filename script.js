@@ -42,8 +42,10 @@ let trueAnswer = null;
 function saveArrayToLocalstorage() {
   localStorage.setItem("questionList", JSON.stringify(questionList));
 }
-/*if bedingung wenn LS leer*/
-/* saveArrayToLocalstorage(); */
+
+if (localStorage.getItem("questionList") === null) {
+  saveArrayToLocalstorage();
+}
 
 function next() {
   questionList = JSON.parse(localStorage.getItem("questionList"));
@@ -208,3 +210,29 @@ function exportLocalStorage() {
 }
 
 /*importbutton um fragen aus er Json datei zu laden*/
+function importLocalStorage() {
+  /*erstellt virtuelles inputfeld*/
+  const importBtn = document.createElement("input");
+  /* definiert typ als datei upload*/
+  importBtn.type = "file";
+  /*sagt dass nur .json dateien passen*/
+  importBtn.accept = ".json";
+  /*es reagiert, wenn der user eine datei ausgewählt hat*/
+  importBtn.onchange = function (event) {
+    /*nimmt die erste ausgewählte datei*/
+    const datei = event.target.files[0];
+    /*erstellt werkzeug zum einlesen der datei*/
+    const reader = new FileReader();
+    /*HANDLUNG WENN DIE DATEI EINGELESEN IST*/
+    reader.onload = function (e) {
+      const importText = e.target.result;
+      /*schreibt es als questionList in den localStorage*/
+      localStorage.setItem("questionList", importText);
+      alert("Daten erfolgreich importiert");
+    };
+    /*löst das onload aus*/
+    reader.readAsText(datei);
+  };
+  /*virtueller click*/
+  importBtn.click();
+}
