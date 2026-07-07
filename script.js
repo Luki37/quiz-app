@@ -42,8 +42,8 @@ let trueAnswer = null;
 function saveArrayToLocalstorage() {
   localStorage.setItem("questionList", JSON.stringify(questionList));
 }
-
-saveArrayToLocalstorage();
+/*if bedingung wenn LS leer*/
+/* saveArrayToLocalstorage(); */
 
 function next() {
   questionList = JSON.parse(localStorage.getItem("questionList"));
@@ -192,5 +192,19 @@ function reset() {
 }
 
 /*export button für Exportieren in downloads der JSON datei mit den fragen*/
+function exportLocalStorage() {
+  /*holt liste aus storage*/
+  const exportList = localStorage.getItem("questionList");
+  /*formatiert liste als Blob (Binary Large Object) */
+  const newBlob = new Blob([exportList], { type: "application.json" });
+  /*erstellt einen virtuellen link, nicht sichtbar im html*/
+  const link = document.createElement("a");
+  /*gibt dem link einen URL zum blop*/
+  link.href = URL.createObjectURL(newBlob);
+  /*definiert dateiname für download*/
+  link.download = "Fragenkatalog_QuizApp.json";
+  /*löst das ganze aus*/
+  link.click();
+}
 
 /*importbutton um fragen aus er Json datei zu laden*/
