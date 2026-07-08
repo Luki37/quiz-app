@@ -75,6 +75,8 @@ function saveArrayToLocalstorage() {
   localStorage.setItem("questionList", JSON.stringify(questionList));
 }
 
+/*prüft ob starage keine liste hat (null) oder leet ist (0)
+JSON.parse wandelt in ein Array um*/
 if (
   localStorage.getItem("questionList") === null ||
   JSON.parse(localStorage.getItem("questionList")).length === 0
@@ -83,6 +85,7 @@ if (
 }
 
 function next() {
+  /*holt liste aus storrage und macht array draus*/
   questionList = JSON.parse(localStorage.getItem("questionList"));
 
   const result = document.getElementById("result");
@@ -91,15 +94,28 @@ function next() {
   const randomQuestion =
     questionList[Math.floor(Math.random() * questionList.length)];
 
+  /* die drei punkte entpacken das array der falschen Antworten*/
   const mixedAnswers = [
     randomQuestion.answerTrue,
     ...randomQuestion.answerFalse,
   ];
 
+  /* let i = mixedAnswers.length - 1: Startpunkt ist der allerletzte Index des Arrays.
+  i > 0: Die Schleife läuft rückwärts, bis sie beim zweitsten Element (Index 1) ankommt. 
+  Beim allerersten Element (Index 0) stoppt sie, da dieses nicht mehr mit sich selbst 
+  getauscht werden muss.
+  i--: Nach jedem Durchgang springt die Schleife ein Element weiter nach vorne. */
   for (let i = mixedAnswers.length - 1; i > 0; i--) {
+    /* *(i + 1): Skaliert diese Zahl, sodass sie im Bereich von 0 bis maximal i liegt. */
     const j = Math.floor(Math.random() * (i + 1));
+    /*tauscht die plätze der elemente i und j */
     [mixedAnswers[i], mixedAnswers[j]] = [mixedAnswers[j], mixedAnswers[i]];
-  }
+  } /*Die Logik im Schnelldurchlauf (Bildliche Vorstellung):Stellen Sie sich vor, Sie
+  haben einen Stapel Karten.Sie greifen sich die letzte Karte des Stapels (i).Sie wählen
+  per Zufall eine Karte aus dem gesamten Stapel davor aus (j).Sie tauschen die Plätze 
+  dieser beiden Karten.Die getauschte Karte ganz hinten rühren Sie nicht mehr an. Sie
+  gehen einen Schritt nach vorne (i--) und wiederholen das Spiel mit der jetzt letzten
+  Karte des restlichen Stapels. */
 
   const question = document.createElement("div");
   question.classList.add("question");
@@ -139,17 +155,22 @@ function next() {
   const allButtons = [answer1, answer2, answer3, answer4];
 
   allButtons.forEach((button) => {
+    /*reagiert, sobald einer der buttons geklickt wird*/
     button.addEventListener("click", function checkAnswer(event) {
       const clickedButton = event.target;
+      /*prüft, ob die geklickte antwort wie richtige antwort ist*/
       trueAnswer = allButtons.find(
         (button) => button.innerText === randomQuestion.answerTrue,
       );
-
+      /*färbt das feld grün wenn die gewählte antwort richtig ist*/
       if (clickedButton.innerText === randomQuestion.answerTrue) {
         clickedButton.style.backgroundColor = "rgb(74, 194,74";
+        /*und deaktiviert die anderen buttons*/
         allButtons.forEach((btn) => (btn.disabled = true));
       } else {
+        /*wenn das geklickte feld falsch war -> rote färbunb*/
         clickedButton.style.backgroundColor = "rgb(219, 47, 16";
+        /*und deaktiviert die anderen buttons ausser dem button um die lösung anzuzeigen*/
         allButtons.forEach((btn) => (btn.disabled = true));
         result.disabled = false;
       }
@@ -168,11 +189,14 @@ function showResult() {
 }
 
 /*löscht eine Frage aus dem localstorage*/
-function deleteQuest(questId) {
+function deleteQuest(questId) 
+/*macht einen "alert" den man bestätigen muss*/
   const securityRequest = confirm("Möchtest du die Frage dauerhaft löschen?");
+  /*wenn "abbrechen" return*/
   if (!securityRequest) {
     return;
   }
+  /*läscht quest anhand der ID*/
   document.addEventListener("DOMContentLoaded", deleteQuest);
   document.getElementById(questId).remove();
   questionList = questionList.filter((question) => {
@@ -191,6 +215,7 @@ function saveQuest() {
   const newFalseAnswer2 = inputFalseAnswer2.value;
   const newFalseAnswer3 = inputFalseAnswer3.value;
 
+  /*wenn eines der felder leer ist (|| = oder) macht es einen alert*/
   if (
     newQuest === "" ||
     newTrueAnswer === "" ||
@@ -199,7 +224,13 @@ function saveQuest() {
     newFalseAnswer3 === ""
   ) {
     alert("Bitte alle Felder ausfüllen!");
-  } else {
+  } 
+  /*andernfalls erstellt es einen neue quest im speicher*/
+  else {
+    /*definiert die id anhand eindeutigen Zeitstempels: Date.now() 
+    zählt die Millisekunden, die seit dem 1. Januar 1970 und liefert 
+    so immer eine einzigartige zahl da in der gleichen millisekunge 
+    keine zwei fragen erfasst werden.*/
     const questId = Date.now();
 
     const questElement = {
