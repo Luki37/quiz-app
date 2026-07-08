@@ -189,8 +189,8 @@ function showResult() {
 }
 
 /*löscht eine Frage aus dem localstorage*/
-function deleteQuest(questId) 
-/*macht einen "alert" den man bestätigen muss*/
+function deleteQuest(questId) {
+  /*macht einen "alert" den man bestätigen muss*/
   const securityRequest = confirm("Möchtest du die Frage dauerhaft löschen?");
   /*wenn "abbrechen" return*/
   if (!securityRequest) {
@@ -224,9 +224,8 @@ function saveQuest() {
     newFalseAnswer3 === ""
   ) {
     alert("Bitte alle Felder ausfüllen!");
-  } 
+  } else {
   /*andernfalls erstellt es einen neue quest im speicher*/
-  else {
     /*definiert die id anhand eindeutigen Zeitstempels: Date.now() 
     zählt die Millisekunden, die seit dem 1. Januar 1970 und liefert 
     so immer eine einzigartige zahl da in der gleichen millisekunge 
