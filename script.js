@@ -13,7 +13,7 @@ let questionList = [
   {
     question:
       "Was passierte im Jahr 2008 mit dem offiziellen Staatsnamen von Kiribati im offiziellen Telefonbuch der Hauptstadt?",
-    answerTrue: " Er fehlte komplett, weil der Buchstabe „K“ ausging.",
+    answerTrue: 'Er fehlte komplett, weil der Buchstabe "K" ausging.',
     answerFalse: [
       "Er wurde komplett rückwärts abgedruckt.",
       "Er wurde versehentlich durch das Rezept für Bananenbrot ersetzt.",
@@ -26,7 +26,7 @@ let questionList = [
       "Welches bizarre Verbot gilt laut einem alten, aber immer noch gültigen Gesetz in der Stadt Gainesville im US-Bundesstaat Georgia?",
     answerTrue: "Man darf Brathähnchen nicht mit einer Gabel essen.",
     answerFalse: [
-      "Man darf sonntags keinem Esel ein Korsett anlegen",
+      "Man darf sonntags keinem Esel ein Korsett anlegen.",
       "Enten müssen lange Hosen tragen.",
       "Man darf eine Schildkröte nicht als Hut tragen.",
     ],
