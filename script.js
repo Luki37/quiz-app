@@ -75,7 +75,10 @@ function saveArrayToLocalstorage() {
   localStorage.setItem("questionList", JSON.stringify(questionList));
 }
 
-if (localStorage.getItem("questionList") === null) {
+if (
+  localStorage.getItem("questionList") === null ||
+  JSON.parse(localStorage.getItem("questionList")).length === 0
+) {
   saveArrayToLocalstorage();
 }
 
@@ -176,6 +179,7 @@ function deleteQuest(questId) {
     return question.questId !== questId;
   });
   saveArrayToLocalstorage();
+  next();
 }
 
 /*speichert eine Frage und alle Antworten im localstorage*/
