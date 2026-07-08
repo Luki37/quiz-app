@@ -34,6 +34,35 @@ let questionList = [
   },
 ];
 
+let wrapper = document.getElementById("wrapper");
+
+const introDiv = document.createElement("div");
+introDiv.classList.add("intro");
+introDiv.innerText = 'Klicke auf "Weiter" um zu starten!';
+
+const footer = document.createElement("div");
+footer.classList.add("footer");
+
+const resultBtn = document.createElement("button");
+resultBtn.id = "result";
+resultBtn.classList.add("button");
+resultBtn.innerText = "Lösung";
+resultBtn.onclick = showResult;
+footer.appendChild(resultBtn);
+
+const nextBtn = document.createElement("button");
+nextBtn.classList.add("button");
+nextBtn.innerText = "Weiter";
+nextBtn.onclick = next;
+footer.appendChild(nextBtn);
+
+const mainPage = document.createElement("div");
+mainPage.classList.add("mainPage");
+mainPage.appendChild(introDiv);
+mainPage.appendChild(footer);
+
+wrapper.appendChild(mainPage);
+
 const inputQuest = document.getElementById("inputQuest");
 const inputTrueAnswer = document.getElementById("inputTrueAnswer");
 const inputFalseAnswer1 = document.getElementById("inputFalseAnswer1");
@@ -52,9 +81,6 @@ if (localStorage.getItem("questionList") === null) {
 
 function next() {
   questionList = JSON.parse(localStorage.getItem("questionList"));
-
-  let wrapper = document.getElementById("wrapper");
-  wrapper.innerHTML = "";
 
   const result = document.getElementById("result");
   result.disabled = true;
@@ -127,7 +153,11 @@ function next() {
     });
   });
 
-  document.getElementById("wrapper").appendChild(question);
+  let wrapper = document.getElementById("wrapper");
+  wrapper.innerHTML = "";
+
+  wrapper.appendChild(question);
+  wrapper.appendChild(footer);
 }
 
 function showResult() {
